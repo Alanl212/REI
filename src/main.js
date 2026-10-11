@@ -70,7 +70,15 @@ async function boot() {
   const drawer = initHouseDrawer(houses);
   const toast = createToast();
 
+  // analytics hooks: listen for these on document (e.g. send to GA4 / Plausible from Webflow)
+  const track = (name, detail) => document.dispatchEvent(new CustomEvent(`rea:${name}`, { detail }));
+  document.addEventListener('click', (e) => {
+    const cta = e.target.closest?.('a.rea-btn, button.rea-btn, [data-track]');
+    if (cta) track('cta', { label: cta.dataset.track || cta.textContent.trim(), href: cta.getAttribute('href') });
+  });
+
   const goToHouse = (h) => {
+    track('house', { key: h.key, name: h.name });
     const el = world?.tour.scrollTargetFor(`house-${h.key}`);
     if (el) scroll.to(el);
     else drawer.open(h.key);
@@ -80,7 +88,9 @@ async function boot() {
     initCursor(world);
     initDuckBubble(world);
     world.on('house', goToHouse);
+    world.on('stop', ({ name }) => track('stop', { name }));
     world.on('spin', (h) => {
+      track('spin', { key: h.key, name: h.name });
       toast.show({
         title: `House ${h.name}!`,
         text: `${h.language} for “${h.meaning}” · ${h.pillar}`,

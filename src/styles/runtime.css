@@ -18,6 +18,13 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-stopped { overflow: hidden; }
 
+/* ---------------------------------------------------------------- page sections over the world */
+/* Sections float above the fixed 3D canvas. Empty space lets clicks reach the world;
+   anything interactive inside a section still gets the pointer. */
+[data-world-stop], [data-world-content] { position: relative; z-index: 1; }
+[data-world-stop] { pointer-events: none; }
+[data-world-stop] :is(a, button, input, select, textarea, summary, label, form, details, [data-world-card], .rea-card) { pointer-events: auto; }
+
 /* ---------------------------------------------------------------- world canvas */
 [data-rea-world] {
   position: fixed;

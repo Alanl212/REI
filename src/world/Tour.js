@@ -1,51 +1,51 @@
 // Scroll-driven camera tour. Each page section with [data-world-stop="name"] is a stop; the
-// camera glides (with a little arc) to that stop's preset as the section scrolls into view,
+// camera glides (with a little lift) to that stop's shot as the section scrolls into view,
 // and the duck hops over to meet you.
 import * as THREE from 'three';
-import { polar } from './kit.js';
-import { HERO, HUB, STATION_R, STATION_ANGLES, PAVILION_R, HOUSE_ANGLES, ROAD, ARCH, SQUARE } from './layout.js';
+import { ZONES, BAYS, NAVE_HALF } from './hall/layout.js';
 
 const v = (x, y, z) => new THREE.Vector3(x, y, z);
 const UP = new THREE.Vector3(0, 1, 0);
 
 /**
- * Camera presets. Each shot is: pos (camera), subject (what we look at), side (+1 = text card on
- * the left so the subject sits right of centre, -1 = card on the right, 0 = centred) and duck
- * (where the duck hops to). The aim point is worked out live from the screen aspect, see framed().
+ * Camera shots in the Grand Hall. Each shot is: pos (camera), subject (what we look at), side
+ * (+1 = text card on the left so the subject sits right of centre, -1 = card on the right,
+ * 0 = centred), duck (where the duck hops to) and shift (how far the subject moves off-centre).
+ * The aim point is worked out live from the screen aspect, see framed().
  */
 export function makePresets(houses) {
   const shot = (pos, subject, side, duck, shift = 0.3) => ({ pos, subject, side, duck, shift });
+  const W = ZONES.wheel.pos;
+  const bayShot = (side, k, cardSide) => shot(v(-side * 3, 4.6, BAYS[k] + 6.5), v(side * 16, 3.6, BAYS[k]), cardSide, v(side * (NAVE_HALF - 2.4), 0, BAYS[k] + 3.4));
   const P = {
-    hero: shot(v(-6.5, 7.2, 64), v(1.5, 4, 27), 1, HERO.duck, 0.32),
-    why: shot(v(12.5, 3.6, 44.5), v(3.6, 2.2, 34.5), -1, v(3.6, 0, 34.5)),
-    model: shot(v(42, 15, 40), polar(STATION_R, 80, 2), 1, polar(STATION_R + 3, STATION_ANGLES[0] - 7)),
-    houses: shot(v(-1, 11.5, 22), v(0, 6.3, 0), 1, v(3.2, 0, 7.5)),
-    road: shot(v(-2, 12, -66), v(2.5, 4.5, -29), -1, v(ROAD.fromX - 2.2, 0, ROAD.z - 3.6), 0.2),
-    graduate: shot(v(-15, 7, -51), v(ARCH.x, 5.5, ARCH.z), 1, v(ARCH.x, 0, ARCH.z - 2.6)),
-    codesign: shot(v(-50, 12, 18), v(SQUARE.x, 4.5, SQUARE.z), -1, v(SQUARE.x + 4.5, 0, SQUARE.z + 4)),
-    founder: shot(v(-5, 2.6, 45.5), v(3.6, 2.6, 34.5), 1, HERO.duck),
-    join: shot(v(40, 34, 64), v(0, 0, 0), -1, v(2.2, 0, 8), 0.25),
-    faq: shot(v(-46, 30, 52), v(0, 0, 0), 1, v(2.2, 0, 8), 0.25),
+    hero: shot(v(-1.2, 3.6, 17.5), v(1, 9, -95), 1, v(2.8, 0, 4), 0.16),
+    why: shot(v(8.5, 2.4, 12.5), v(2.8, 2.1, 4), -1, v(2.8, 0, 4)),
+    model: shot(v(2.5, 7, 12), v(-3, 4.5, -20), 1, v(-1.5, 0, -4), 0.25),
+    'el-1': bayShot(ZONES.stream.side, ZONES.stream.k, 1),
+    'el-2': bayShot(ZONES.careers.side, ZONES.careers.k, 1),
+    'el-3': bayShot(ZONES.sel.side, ZONES.sel.k, 1),
+    'el-4': bayShot(ZONES.advocacy.side, ZONES.advocacy.k, 1),
+    'el-5': shot(v(-2.5, 3.6, -16), v(ZONES.trophy.x, 3.4, ZONES.trophy.z), 1, v(-1.5, 0, -24), 0.28),
+    houses: shot(v(-6, 7, -50), v(W.x, 6, W.z), 1, v(9, 0, -56), 0.22),
+    road: shot(v(5.5, 7.5, -51), v(0, 6, -74), -1, v(-2.6, 0, -58), 0.2),
+    graduate: shot(v(2, 3.6, -70), v(0, 13, -102), 1, v(0, 0, -88), 0.22),
+    codesign: shot(v(7, 8, -48), v(-13, 5, -66), -1, v(-4, 0, -61), 0.25),
+    founder: shot(v(-3.5, 2.4, 11.5), v(2.8, 2.3, 4), 1, v(2.8, 0, 4)),
+    join: shot(v(0, 19.5, 16), v(0, 2, -55), -1, v(0, 0, -6), 0.18),
+    faq: shot(v(0, 15, -94), v(0, 4, -20), 1, v(0, 0, -6), 0.18),
 
-    'houses-intro': shot(v(22, 20, 36), v(0, 4, 0), 1, v(3.2, 0, 7.5)),
-    'houses-how': shot(v(7, 9, 17.5), v(0, 6.2, 0), -1, v(-3.4, 0, 7)),
-    'houses-sorting': shot(v(-1.5, 8.2, 17.2), v(0, 6.6, 0), 1, v(3.6, 0, 6.2)),
-    'houses-cup': shot(v(-3, 10.5, 18.5), v(0, 4, 4), -1, v(-6.6, 0, 8.6)),
-    'houses-cta': shot(v(-38, 30, 46), v(0, 0, 0), 1, v(3.2, 0, 7.5), 0.25),
+    'houses-intro': shot(v(0, 12, -16), v(0, 5, -44), 1, v(2.4, 0, -30), 0.2),
+    'houses-how': shot(v(-6, 7.5, -60), v(W.x, 6.4, W.z), -1, v(9, 0, -56)),
+    'houses-sorting': shot(v(-3.5, 7.2, -57), v(W.x, 6.4, W.z), 1, v(9, 0, -64)),
+    'houses-cup': shot(v(-4, 9, -51), v(ZONES.cup.x, 3.5, -60), -1, v(5.2, 0, -53)),
+    'houses-cta': shot(v(0, 19.5, 16), v(0, 2, -55), 1, v(0, 0, -6), 0.18),
   };
-  STATION_ANGLES.forEach((deg, i) => {
-    P[`el-${i + 1}`] = shot(polar(STATION_R + 12.5, deg - 14, 6.8), polar(STATION_R, deg, 2.4), 1, polar(STATION_R + 2.8, deg + 9));
-  });
   houses.forEach((h, i) => {
-    const deg = HOUSE_ANGLES[i];
-    P[`house-${h.key}`] = shot(polar(PAVILION_R + 19, deg - 8, 8), polar(PAVILION_R, deg, 4.2), i % 2 ? -1 : 1, polar(PAVILION_R + 6.5, deg + 2));
+    const b = ZONES.houseBays[i];
+    // pulled back and aimed higher so the House banner stays in frame
+    if (b) P[`house-${h.key}`] = shot(v(-b.side * 4.5, 5.4, b.z + 10), v(b.side * 14, 6.8, b.z), i % 2 ? -1 : 1, v(b.side * (NAVE_HALF + 1.2), 0, b.z + 2.2));
   });
   return P;
-}
-
-/** Camera-to-subject segments, so scenery can keep these lines of sight clear. */
-export function sightlines(presets) {
-  return Object.values(presets).map((p) => [p.pos, p.subject]);
 }
 
 const smooth = (t) => t * t * (3 - 2 * t);

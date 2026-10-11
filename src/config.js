@@ -5,6 +5,11 @@
 const script = document.currentScript;
 const scriptBase = script && script.src ? new URL('../assets/', script.src).href : new URL('assets/', location.href).href;
 
+function modelSetting(user, host, abs) {
+  if (user.model === false || (host && host.dataset.model === 'none')) return null;
+  return abs(user.model || (host && host.dataset.model) || 'models/rea-duck.glb');
+}
+
 export function getConfig() {
   const user = window.REA_WORLD || {};
   const host = document.querySelector('[data-rea-world]');
@@ -15,9 +20,12 @@ export function getConfig() {
     assets,
     abs,
     reducedMotion: user.reducedMotion ?? reduced,
-    // Rigged mascot: drop rea-duck.glb into assets/models and set model to 'models/rea-duck.glb'.
-    model: abs(user.model || (host && host.dataset.model) || null),
-    modelClips: { idle: /idle|breath|stand/i, hop: /jump|hop/i, walk: /walk|run/i, wave: /wave|hello|greet/i, dance: /dance|cheer|celebrat/i, ...(user.modelClips || {}) },
+    // Rigged 3D duck. Defaults to assets/models/rea-duck.glb; set model: false (or data-model="none")
+    // to keep only the lightweight paper duck.
+    model: modelSetting(user, host, abs),
+    modelClips: { idle: /idle|breath|stand|expression/i, wave: /wave|hello|greet/i, ...(user.modelClips || {}) },
+    modelHeadBone: user.modelHeadBone || /(^|[^a-z])head$|spine\.006$/i,
+    modelGlow: user.modelGlow ?? 0.14,
     duckViews: {
       front: abs('img/duck-front.webp'),
       left: abs('img/duck-left.webp'),
@@ -25,6 +33,12 @@ export function getConfig() {
       right: abs('img/duck-right.webp'),
     },
     font3d: abs('fonts/bricolage-800.typeface.json'),
+    quality: user.quality || null, // 'high' | 'low' (auto by default)
+    // numbers shown inside the 3D world (keep in sync with the page copy)
+    enrollment: user.enrollment || null,
+    stats: user.stats || null,
+    voices: user.voices || null,
+    cupPoints: user.cupPoints || null,
     canvasFont: user.canvasFont || '"Bricolage Grotesque", system-ui, sans-serif',
     markerFont: user.markerFont || '"Permanent Marker", "Bricolage Grotesque", cursive',
     introSessionKey: 'rea-intro-seen',

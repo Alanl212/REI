@@ -1,0 +1,8 @@
+# Netlify / Cloudflare Pages headers. The 3D world loads models, textures and fonts from this
+# host while running on your Webflow domain, so these files must allow cross-origin requests.
+/assets/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=604800
+/dist/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
