@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Reimagine Education Academy | Proposed K–8 Public Charter School in Mobile, Alabama</title>
+  <meta name="description" content="Reimagine Education Academy is a proposed tuition-free K–8 public charter school being co-designed with families in Mobile, Prichard, Africatown, and surrounding communities.">
+  <meta property="og:title" content="Reimagine Education Academy">
+  <meta property="og:description" content="Building a community-co-designed, tuition-free K–8 public charter school for Mobile. Think Critically. Write Powerfully. Advocate Boldly.">
+  <meta property="og:image" content="assets/img/rea-logo-768.webp">
+  <meta name="theme-color" content="#EBE4E2">
+  <link rel="icon" href="assets/img/duck-front.webp">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="dist/rea-world.css">
+  <link rel="stylesheet" href="dist/rea-site.css">
+  <script defer src="dist/rea-world.js"></script>
+</head>
+<body>
+  <a class="rea-skip" href="#main">Skip to content</a>
+
+  <!-- Preloader: the duck paints the screen, the paint drips away, the world builds itself. -->
+  <div class="rea-preloader" data-rea-preloader>
+    <video muted playsinline autoplay preload="auto" poster="assets/video/rea-preloader-poster.jpg" aria-hidden="true">
+      <source src="assets/video/rea-preloader.mp4" type="video/mp4">
+    </video>
+    <button class="rea-preloader__skip" type="button" data-rea-preloader-skip>Skip intro</button>
+    <div class="rea-preloader__progress" aria-hidden="true"><span data-rea-preloader-bar></span></div>
+  </div>
+
+  <!-- The Three.js world renders into this fixed layer. -->
+  <div data-rea-world aria-hidden="true"></div>
+
+  <header class="rea-nav" data-nav>
+    <a class="rea-nav__logo" href="index.html" aria-label="Reimagine Education Academy home"><img src="assets/img/rea-logo-768.webp" alt="Reimagine Education Academy" width="768" height="512"></a>
+    <ul class="rea-nav__links" id="rea-menu">
+      <li><a href="#model">School Model</a></li>
+      <li><a href="houses.html">Houses</a></li>
+      <li><a href="#codesign">Co-Design</a></li>
+      <li><a href="#founder">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="rea-btn rea-nav__cta" href="#join">Join the Movement</a>
+    <button class="rea-nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="rea-menu">Menu</button>
+  </header>
+
+  <nav class="rea-rail" data-rea-rail aria-label="Tour progress"></nav>
+
+  <main id="main" class="rea-main">
+
+    <!-- 1 · HERO -->
+    <section class="rea-chapter rea-chapter--hero" data-world-stop="hero" data-stop-label="Welcome" aria-labelledby="hero-title">
+      <div class="rea-card rea-hero-card">
+        <p class="rea-status" data-hero-in>Proposed K–8 public charter · Mobile, AL</p>
+        <h1 class="rea-h1" id="hero-title" data-split data-hero-in>Think <mark class="rea-mark rea-mark--aqua">Critically.</mark> Write <mark class="rea-mark rea-mark--yellow">Powerfully.</mark> Advocate <mark class="rea-mark rea-mark--orange">Boldly.</mark></h1>
+        <p class="rea-lead" data-hero-in>A proposed tuition-free K–8 public charter school being built with—and for—the communities of Mobile, Prichard, and surrounding areas.</p>
+        <div class="rea-btn-row" data-hero-in>
+          <a class="rea-btn" href="#join">Join Our Mailing List</a>
+          <a class="rea-btn rea-btn--white" href="#codesign">Share Your Voice</a>
+        </div>
+        <p class="rea-small" style="margin:16px 0 0" data-hero-in>Planned Fall 2028 opening, subject to charter authorization.</p>
+      </div>
+      <p class="rea-scrollcue rea-marker" data-hero-in aria-hidden="true">scroll to explore <span>↓</span></p>
+      <div class="rea-marquee" data-marquee aria-hidden="true">
+        <div class="rea-marquee__track" data-marquee-track>
+          <span>Tuition-free</span><span>✶</span><span>Open enrollment</span><span>✶</span><span>K–8 public charter (proposed)</span><span>✶</span><span>Co-designed with Mobile, Prichard &amp; Africatown</span><span>✶</span><span>Planned Fall 2028 opening*</span><span>✶</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · OUR WHY -->
+    <section class="rea-chapter rea-chapter--right" data-world-stop="why" data-stop-label="Our Why" aria-labelledby="why-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">Our why</p>
+        <h2 class="rea-h2" id="why-title" data-split>Built <mark class="rea-mark rea-mark--aqua">with</mark> the community. Not brought to it.</h2>
+        <p>Too many students are asked to prepare for tests without being fully prepared to understand their world, communicate their ideas, imagine new solutions, and shape what comes next.</p>
+        <p>Families across Mobile, Prichard, and surrounding communities have named what they want: high expectations, culturally affirming learning, stronger literacy and math, arts and technology, career exposure, mental-health support, and genuine partnership with families.</p>
+        <p style="margin:0"><strong>Reimagine Education Academy is being designed in response.</strong> Built with the community through listening, reflection, design, and ongoing accountability.</p>
+      </div>
+    </section>
+
+    <!-- 3 · ACADEMIC FOUNDATION -->
+    <section class="rea-chapter" id="model" data-world-stop="model" data-stop-label="School Model" aria-labelledby="model-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">The school model</p>
+        <h2 class="rea-h2" id="model-title" data-split>Literacy is the <mark class="rea-mark rea-mark--yellow">engine.</mark></h2>
+        <p>Literacy and numeracy mastery form the academic bedrock: structured literacy grounded in the Science of Reading, conceptual mathematics that builds reasoning and fluency, regular formative assessment, and timely support through a Multi-Tiered System of Support.</p>
+        <p>Every student will have an <strong>Individual Learning Plan</strong> shaped by diagnostic data, student goals, and family input. Teachers will use the 5E model alongside “I do, we do, you do.”</p>
+        <ul class="rea-chips"><li>Engage</li><li>Explore</li><li>Explain</li><li>Elaborate</li><li>Evaluate</li></ul>
+        <p class="rea-small" style="margin:16px 0 0">Planned curriculum and anticipated student experience. Follow the path: five design elements ahead →</p>
+      </div>
+    </section>
+
+    <!-- 4–8 · FIVE DESIGN ELEMENTS -->
+    <section class="rea-chapter" data-world-stop="el-1" data-stop-label="STREAM+H" aria-labelledby="el1-title">
+      <div class="rea-card" data-reveal>
+        <span class="rea-card__num">01 / 05</span>
+        <p class="rea-eyebrow" style="--dot: var(--aqua)">Design element</p>
+        <h2 class="rea-h2" id="el1-title" data-split>STREAM+H</h2>
+        <p>Science, Technology, Reading, Engineering, Arts, Mathematics, and Humanities/History, taught as connected ways of understanding and shaping the world. Literacy is the engine, history gives cultural and civic context, and the arts power expression and meaning-making.</p>
+        <ul class="rea-chips"><li>Inquiry cycles</li><li>Performance tasks</li><li>Project-based learning</li></ul>
+      </div>
+    </section>
+
+    <section class="rea-chapter" data-world-stop="el-2" data-stop-label="Careers" aria-labelledby="el2-title">
+      <div class="rea-card" data-reveal>
+        <span class="rea-card__num">02 / 05</span>
+        <p class="rea-eyebrow" style="--dot: var(--yellow)">Design element</p>
+        <h2 class="rea-h2" id="el2-title" data-split>Career exploration from <mark class="rea-mark rea-mark--yellow">kindergarten</mark></h2>
+        <ul class="rea-steps">
+          <li><b>K–2</b><span>Discover: meet community helpers and professionals</span><strong></strong></li>
+          <li><b>3–5</b><span>Explore: career-connected projects, speakers, field experiences</span><strong></strong></li>
+          <li><b>6–8</b><span>Experience &amp; plan: pathway projects, mentorship, job shadows, Pre-ACT prep</span><strong></strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="rea-chapter" data-world-stop="el-3" data-stop-label="SEL" aria-labelledby="el3-title">
+      <div class="rea-card" data-reveal>
+        <span class="rea-card__num">03 / 05</span>
+        <p class="rea-eyebrow" style="--dot: var(--orange)">Design element</p>
+        <h2 class="rea-h2" id="el3-title" data-split>SEL + restorative practices</h2>
+        <p>Students will learn to understand themselves, build relationships, regulate emotions, make responsible decisions, and navigate conflict. Daily and weekly social-emotional learning, restorative circles, counseling supports, and a tiered restorative model will help create a safe, affirming, accountable school culture.</p>
+        <ul class="rea-chips"><li>Restorative circles</li><li>Counseling supports</li><li>Belonging</li></ul>
+      </div>
+    </section>
+
+    <section class="rea-chapter" data-world-stop="el-4" data-stop-label="Advocacy" aria-labelledby="el4-title">
+      <div class="rea-card" data-reveal>
+        <span class="rea-card__num">04 / 05</span>
+        <p class="rea-eyebrow" style="--dot: var(--ink)">Design element</p>
+        <h2 class="rea-h2" id="el4-title" data-split>Community accountability + advocacy</h2>
+        <p>Community voice will remain part of how the school operates, not only how it was founded: family leadership structures, community roundtables, public learning showcases, student advocacy, and regular feedback cycles.</p>
+        <p style="margin:0"><strong>Advocacy is more than speaking up.</strong> It is studying issues, listening to others, communicating with evidence, and working toward solutions.</p>
+      </div>
+    </section>
+
+    <section class="rea-chapter" data-world-stop="el-5" data-stop-label="Houses" aria-labelledby="el5-title">
+      <div class="rea-card" data-reveal>
+        <span class="rea-card__num">05 / 05</span>
+        <p class="rea-eyebrow" style="--dot: var(--aqua)">Design element</p>
+        <h2 class="rea-h2" id="el5-title" data-split>The K–8 House System</h2>
+        <p>Every student will belong to a cross-grade House that stays with them from kindergarten through eighth grade, for belonging, mentorship, leadership, healthy competition, and celebration. Daily advisory will connect academic habits, character, SEL, goal setting, and community identity.</p>
+        <a class="rea-btn rea-btn--aqua" href="#houses">Meet the Houses ↓</a>
+      </div>
+    </section>
+
+    <!-- 9 · HOUSES -->
+    <section class="rea-chapter rea-chapter--tall" id="houses" data-world-stop="houses" data-stop-label="The Houses" aria-labelledby="houses-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">The House System</p>
+        <h2 class="rea-h2" id="houses-title" data-split>Four Houses. <mark class="rea-mark rea-mark--orange">One flock.</mark></h2>
+        <p>Look at our duck’s feathers: aqua, yellow, and orange, all rooted in black. Each color is a House. Tap one to meet it, or spin the House Wheel in the world.</p>
+        <div class="rea-house-grid">
+          <button class="rea-house-btn" type="button" data-open-house="lumiere" data-house-key="lumiere" data-house-name="Lumière" data-house-color="#0FD1EB"><b>Lumière</b><span>French · “light”</span></button>
+          <button class="rea-house-btn rea-house-btn--pluma" type="button" data-open-house="pluma" data-house-key="pluma" data-house-name="Pluma" data-house-color="#FCD615"><b>Pluma</b><span>Spanish · “feather / pen”</span></button>
+          <button class="rea-house-btn rea-house-btn--igboya" type="button" data-open-house="igboya" data-house-key="igboya" data-house-name="Ìgboyà" data-house-color="#FCA00C"><b>Ìgboyà</b><span>Yoruba · “courage”</span></button>
+          <button class="rea-house-btn rea-house-btn--umoja" type="button" data-open-house="umoja" data-house-key="umoja" data-house-name="Umoja" data-house-color="#111111" data-house-ink="#FFFFFF"><b>Umoja</b><span>Swahili · “unity”</span></button>
+        </div>
+        <div class="rea-btn-row">
+          <button class="rea-btn rea-btn--orange" type="button" data-world-action="spin" data-cursor="Spin!">Spin the House Wheel</button>
+          <a class="rea-btn rea-btn--white" href="houses.html">Explore the Houses →</a>
+        </div>
+        <p class="rea-note">House names are working proposals. Students and families will help choose the final names.</p>
+      </div>
+    </section>
+
+    <!-- 10 · ROAD TO 2028 -->
+    <section class="rea-chapter rea-chapter--right" data-world-stop="road" data-stop-label="Road to 2028" aria-labelledby="road-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">Enrollment &amp; launch</p>
+        <h2 class="rea-h2" id="road-title" data-split>The road to <mark class="rea-mark rea-mark--yellow">Fall 2028</mark></h2>
+        <p>Reimagine Education Academy is being designed for a phased Fall 2028 opening, subject to charter authorization. The working plan begins with Kindergarten–Grade 2 and Grade 6, then adds grades over time until the school serves the full K–8 span.</p>
+        <ul class="rea-steps">
+          <li><b>Year 1</b><span>K–2 + Grade 6</span><strong>164</strong></li>
+          <li><b>Year 2</b><span>Add Grades 3 &amp; 7</span><strong>276</strong></li>
+          <li><b>Year 3</b><span>Add Grades 4 &amp; 8</span><strong>368</strong></li>
+          <li><b>Year 4</b><span>Add Grade 5 · full K–8</span><strong>432</strong></li>
+          <li><b>Year 5</b><span>Full K–8 model</span><strong>432</strong></li>
+        </ul>
+        <p class="rea-small" style="margin:0">Proposed authorized maximum at full operation: 705 students. All enrollment figures are planning targets and remain subject to final application reconciliation, facility capacity, budget approval, Governing Board action, and authorizer approval.</p>
+      </div>
+    </section>
+
+    <!-- 11 · PORTRAIT OF A GRADUATE -->
+    <section class="rea-chapter" data-world-stop="graduate" data-stop-label="Graduates" aria-labelledby="grad-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">Portrait of a graduate</p>
+        <h2 class="rea-h2" id="grad-title" data-split>Every REA graduate will be…</h2>
+        <ul class="rea-list">
+          <li><span><strong>A critical thinker &amp; problem solver.</strong> Analyzes complex problems, weighs evidence, asks thoughtful questions.</span></li>
+          <li><span><strong>A powerful communicator.</strong> Reads with comprehension, writes with clarity, speaks with purpose.</span></li>
+          <li><span><strong>A creative innovator.</strong> Uses imagination, artistic expression, and design thinking.</span></li>
+          <li><span><strong>An emerging career explorer.</strong> Connects learning to future pathways and begins making plans.</span></li>
+          <li><span><strong>An engaged citizen &amp; advocate.</strong> Shows civic responsibility, cultural pride, empathy, and leadership.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 12 · COMMUNITY CO-DESIGN -->
+    <section class="rea-chapter rea-chapter--right" id="codesign" data-world-stop="codesign" data-stop-label="Co-Design" aria-labelledby="codesign-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">Community co-design</p>
+        <h2 class="rea-h2" id="codesign-title" data-split>Shaped by <mark class="rea-mark rea-mark--aqua">Mobile, Prichard &amp; Africatown</mark></h2>
+        <p>Families, students, educators, health and mental-health professionals, faith leaders, community advocates, and residents have helped identify priorities, test ideas, and influence the proposed school design.</p>
+        <div class="rea-stats">
+          <div class="rea-stat"><b data-count="300" data-suffix="+">300+</b><span>Survey responses</span></div>
+          <div class="rea-stat"><b data-count="100" data-suffix="+">100+</b><span>One-on-one conversations</span></div>
+          <div class="rea-stat"><b data-count="10" data-suffix="+">10+</b><span>Community events</span></div>
+          <div class="rea-stat"><b data-count="4">4</b><span>Town halls</span></div>
+        </div>
+        <p style="margin:0"><strong>“Community co-design is not a box we checked before applying. It is how we intend to lead.”</strong></p>
+        <div class="rea-btn-row"><a class="rea-btn rea-btn--white" href="#join">Share Your Voice</a></div>
+      </div>
+    </section>
+
+    <!-- 13 · FOUNDER -->
+    <section class="rea-chapter" id="founder" data-world-stop="founder" data-stop-label="Founder" aria-labelledby="founder-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">Our founder</p>
+        <h2 class="rea-h2" id="founder-title" data-split>He came home to build <mark class="rea-mark rea-mark--orange">differently.</mark></h2>
+        <p>For Jhory Buskey, this work is both professional and deeply personal. A Mobile native, a graduate of Mattie T. Blount High School, and a product of Mobile County Public Schools, he returned home after thirteen years in Houston, including a decade with KIPP Texas Public Schools, with more than fifteen years as a teacher, assistant principal, principal in residence, principal, and school leader.</p>
+        <p style="margin:0"><strong>Jhory Buskey, MFA, M.S.Ed.</strong>: CEO/Founder, Reimagine Education Initiative; identified opening Head of School, Reimagine Education Academy. Fellow, New Schools for Alabama School Founders Program and the BES Community Co-Design Track.</p>
+      </div>
+    </section>
+
+    <!-- 14 · JOIN -->
+    <section class="rea-chapter rea-chapter--right rea-chapter--tall" id="join" data-world-stop="join" data-stop-label="Join Us" aria-labelledby="join-title">
+      <div class="rea-card rea-card--wide" data-reveal>
+        <span class="rea-card__tape" aria-hidden="true"></span>
+        <p class="rea-eyebrow">Stay connected</p>
+        <h2 class="rea-h2" id="join-title" data-split>Help build the school our children <mark class="rea-mark rea-mark--yellow">deserve.</mark></h2>
+        <p>Join the mailing list for updates on community events, the charter journey, and future enrollment information.</p>
+        <form class="rea-form" data-demo-form>
+          <div class="rea-form__row">
+            <label>First name<input class="rea-input" name="first" autocomplete="given-name" required></label>
+            <label>Last name<input class="rea-input" name="last" autocomplete="family-name"></label>
+          </div>
+          <div class="rea-form__row">
+            <label>Email<input class="rea-input" type="email" name="email" autocomplete="email" required></label>
+            <label>ZIP code<input class="rea-input" name="zip" inputmode="numeric" autocomplete="postal-code"></label>
+          </div>
+          <fieldset class="rea-checks">
+            <legend>I’m interested as a…</legend>
+            <label><input type="checkbox" name="role" value="family"> Parent / guardian</label>
+            <label><input type="checkbox" name="role" value="community"> Community member</label>
+            <label><input type="checkbox" name="role" value="educator"> Educator</label>
+            <label><input type="checkbox" name="role" value="partner"> Partner organization</label>
+            <label><input type="checkbox" name="role" value="supporter"> Donor / volunteer</label>
+          </fieldset>
+          <div class="rea-btn-row" style="margin-top:6px; align-items:center">
+            <button class="rea-btn" type="submit">Join the Movement</button>
+          </div>
+          <p class="rea-disclaimer">Submitting an interest form does not constitute an application for admission, guarantee enrollment, or create a place on a waiting list. Formal enrollment materials and lottery procedures will be announced only after charter authorization and in accordance with Alabama law.</p>
+        </form>
+        <div class="rea-success" data-form-success hidden tabindex="-1">Quack! You’re on the list. We’ll be in touch with community events and charter updates.</div>
+        <div class="rea-btn-row">
+          <a class="rea-btn rea-btn--orange" href="#">Become a Founding Supporter</a>
+          <a class="rea-btn rea-btn--white" href="#">Attend a Community Event</a>
+          <a class="rea-btn rea-btn--white" href="#">Volunteer With Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15 · FAQ -->
+    <section class="rea-chapter rea-chapter--tall" id="faq" data-world-stop="faq" data-stop-label="FAQ" aria-labelledby="faq-title">
+      <div class="rea-card rea-card--wide" data-reveal>
+        <p class="rea-eyebrow">Frequently asked</p>
+        <h2 class="rea-h2" id="faq-title" data-split>Good questions</h2>
+        <div class="rea-faq">
+          <details><summary>Is Reimagine Education Academy currently open?</summary><p>No. Reimagine Education Academy is a proposed public charter school in development, with a planned Fall 2028 opening subject to authorization.</p></details>
+          <details><summary>Will the school charge tuition?</summary><p>No. If authorized, Reimagine Education Academy will be a tuition-free public charter school.</p></details>
+          <details><summary>Which grades will the Academy serve?</summary><p>The current plan is to open with Kindergarten through Grade 2 and Grade 6, then add grades through a phased-growth model until the Academy serves the full K–8 span.</p></details>
+          <details><summary>Who may attend?</summary><p>The Academy is being designed as an open-enrollment public charter school. Final enrollment procedures, preferences permitted by law, capacity, and lottery information will be published after authorization.</p></details>
+          <details><summary>Where will the school be located?</summary><p>The school is seeking a facility accessible to families in Downtown Mobile, Prichard, Africatown, and surrounding communities. A final site has not yet been announced.</p></details>
+          <details><summary>Does completing an interest form guarantee enrollment?</summary><p>No. An interest form is used only to share updates and understand community demand. It is not an admissions application and does not guarantee a seat.</p></details>
+          <details><summary>How can families get involved now?</summary><p>Join the mailing list, complete community surveys, attend events and town halls, share feedback, volunteer, and express interest in receiving future enrollment updates.</p></details>
+        </div>
+        <p class="rea-small" style="margin:16px 0 0">Last updated: October 2026</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rea-footer">
+    <div class="rea-footer__grid">
+      <div>
+        <img class="rea-footer__logo" src="assets/img/rea-logo-768.webp" alt="Reimagine Education Academy" width="768" height="512" loading="lazy">
+        <p style="margin-top:18px; max-width:46ch">Reimagine Education Initiative is developing Reimagine Education Academy, a proposed tuition-free, open-enrollment K–8 public charter school planned for Mobile, Alabama. Opening is targeted for Fall 2028 and is subject to charter authorization.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul><li><a href="#model">School Model</a></li><li><a href="houses.html">The Houses</a></li><li><a href="#codesign">Community Co-Design</a></li><li><a href="#founder">Founder</a></li><li><a href="#faq">FAQ</a></li></ul>
+      </div>
+      <div>
+        <h4>Get involved</h4>
+        <ul><li><a href="#join">Join the Movement</a></li><li><a href="#join">Express Family Interest</a></li><li><a href="#join">Bring Your Organization to the Table</a></li><li><a href="#join">Invest in What Comes Next</a></li></ul>
+      </div>
+    </div>
+    <div class="rea-footer__legal"><span>© 2026 Reimagine Education Initiative</span><span>Think Critically. Write Powerfully. Advocate Boldly.</span></div>
+  </footer>
+</body>
+</html>

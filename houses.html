@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Houses | Reimagine Education Academy</title>
+  <meta name="description" content="Every student at the proposed Reimagine Education Academy will belong to a cross-grade House from kindergarten through 8th grade. Meet the four Houses.">
+  <meta name="theme-color" content="#EBE4E2">
+  <link rel="icon" href="assets/img/duck-front.webp">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="dist/rea-world.css">
+  <link rel="stylesheet" href="dist/rea-site.css">
+  <script defer src="dist/rea-world.js"></script>
+</head>
+<body>
+  <a class="rea-skip" href="#main">Skip to content</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="rea-crest" viewBox="0 0 100 120">
+        <path d="M50 5 L93 19 V58 C93 88 72 107 50 115 C28 107 7 88 7 58 V19 Z" style="fill: var(--h); stroke: #111; stroke-width: 6; stroke-linejoin: round"/>
+        <path d="M50 96 C36 74 33 48 52 20 C66 46 64 72 50 96 Z" style="fill: #fff; stroke: #111; stroke-width: 5; stroke-linejoin: round"/>
+        <path d="M50 102 C51 80 52 52 52 24" style="fill: none; stroke: #111; stroke-width: 4; stroke-linecap: round"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="rea-preloader" data-rea-preloader>
+    <video muted playsinline autoplay preload="auto" poster="assets/video/rea-preloader-poster.jpg" aria-hidden="true">
+      <source src="assets/video/rea-preloader.mp4" type="video/mp4">
+    </video>
+    <button class="rea-preloader__skip" type="button" data-rea-preloader-skip>Skip intro</button>
+    <div class="rea-preloader__progress" aria-hidden="true"><span data-rea-preloader-bar></span></div>
+  </div>
+
+  <div data-rea-world aria-hidden="true"></div>
+
+  <header class="rea-nav" data-nav>
+    <a class="rea-nav__logo" href="index.html" aria-label="Reimagine Education Academy home"><img src="assets/img/rea-logo-768.webp" alt="Reimagine Education Academy" width="768" height="512"></a>
+    <ul class="rea-nav__links" id="rea-menu">
+      <li><a href="index.html#model">School Model</a></li>
+      <li><a href="houses.html" aria-current="page">Houses</a></li>
+      <li><a href="index.html#codesign">Co-Design</a></li>
+      <li><a href="index.html#founder">About</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+    </ul>
+    <a class="rea-btn rea-nav__cta" href="index.html#join">Join the Movement</a>
+    <button class="rea-nav__toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="rea-menu">Menu</button>
+  </header>
+
+  <nav class="rea-rail" data-rea-rail aria-label="Tour progress"></nav>
+
+  <main id="main" class="rea-main">
+
+    <section class="rea-chapter rea-chapter--hero" data-world-stop="houses-intro" data-stop-label="The Houses" aria-labelledby="h-title">
+      <div class="rea-card rea-hero-card">
+        <p class="rea-status" data-hero-in>The K–8 House System · proposed</p>
+        <h1 class="rea-h1" id="h-title" data-split data-hero-in>Four Houses. <mark class="rea-mark rea-mark--aqua">One</mark> <mark class="rea-mark rea-mark--yellow">flock.</mark></h1>
+        <p class="rea-lead" data-hero-in>Every REA student will join a cross-grade House on day one and keep it from kindergarten through eighth grade. Same House, same people, the whole way through.</p>
+        <div class="rea-btn-row" data-hero-in>
+          <a class="rea-btn rea-btn--orange" href="#sorting">Spin the House Wheel</a>
+          <a class="rea-btn rea-btn--white" href="#house-lumiere">Meet the Houses ↓</a>
+        </div>
+      </div>
+      <p class="rea-scrollcue rea-marker" data-hero-in aria-hidden="true">tap the pavilions <span>↓</span></p>
+      <div class="rea-marquee" data-marquee aria-hidden="true">
+        <div class="rea-marquee__track" data-marquee-track>
+          <span>Lumière</span><span>✶</span><span>Pluma</span><span>✶</span><span>Ìgboyà</span><span>✶</span><span>Umoja</span><span>✶</span><span>Belonging</span><span>✶</span><span>Mentorship</span><span>✶</span><span>Leadership</span><span>✶</span><span>Celebration</span><span>✶</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="rea-chapter rea-chapter--right" data-world-stop="houses-how" data-stop-label="How it works" aria-labelledby="how-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">How Houses will work</p>
+        <h2 class="rea-h2" id="how-title" data-split>Your House is your <mark class="rea-mark rea-mark--aqua">people.</mark></h2>
+        <ul class="rea-list">
+          <li><span><strong>Belonging, K–8.</strong> Kindergartners and eighth graders in the same House, all the way through.</span></li>
+          <li><span><strong>Mentorship.</strong> Older students guide younger ones, and everyone has someone looking out for them.</span></li>
+          <li><span><strong>Leadership.</strong> House captains, House councils, and student voice in decisions.</span></li>
+          <li><span><strong>Healthy competition.</strong> House points for scholarship, kindness, service, and courage.</span></li>
+          <li><span><strong>Celebration.</strong> Cheers, colors, traditions, and showcases that make school feel like family.</span></li>
+        </ul>
+        <p class="rea-small" style="margin:14px 0 0">Daily advisory will connect academic habits, character education, social-emotional learning, goal setting, and community identity.</p>
+      </div>
+    </section>
+
+    <!-- One chapter per House. data-house-* attributes feed the 3D world (names on the pavilions and wheel). -->
+    <section class="rea-chapter" id="house-lumiere" data-world-stop="house-lumiere" data-stop-label="Lumière" aria-labelledby="hl-title">
+      <article class="rea-card rea-house-card" data-reveal data-house-key="lumiere" data-house-name="Lumière" data-house-color="#0FD1EB" data-house-meaning="light" data-house-language="French">
+        <div class="rea-house-card__band">
+          <div><p class="rea-house-card__meta">French · “light” · say loo-mee-AIR</p><h2 class="rea-house-card__name" id="hl-title">Lumière</h2></div>
+          <svg class="rea-house-card__crest" viewBox="0 0 100 120" aria-hidden="true"><use href="#rea-crest"/></svg>
+        </div>
+        <div class="rea-house-card__body">
+          <span class="rea-pillar">Think Critically</span>
+          <p>Members of Lumière bring light to hard questions. They look closely, test ideas against evidence, and never stop asking <em>why</em>.</p>
+          <ul class="rea-chips"><li>Curious</li><li>Analytical</li><li>Reflective</li></ul>
+          <p class="rea-cheer">House cheer: to be written by our first Lumière students.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="rea-chapter rea-chapter--right" id="house-pluma" data-world-stop="house-pluma" data-stop-label="Pluma" aria-labelledby="hp-title">
+      <article class="rea-card rea-house-card rea-house-card--pluma" data-reveal data-house-key="pluma" data-house-name="Pluma" data-house-color="#FCD615" data-house-meaning="feather · pen" data-house-language="Spanish">
+        <div class="rea-house-card__band">
+          <div><p class="rea-house-card__meta">Spanish · “feather / pen” · say PLOO-mah</p><h2 class="rea-house-card__name" id="hp-title">Pluma</h2></div>
+          <svg class="rea-house-card__crest" viewBox="0 0 100 120" aria-hidden="true"><use href="#rea-crest"/></svg>
+        </div>
+        <div class="rea-house-card__body">
+          <span class="rea-pillar">Write Powerfully</span>
+          <p>In Spanish, <em>pluma</em> means both feather and pen. Members of Pluma read deeply, write with clarity, and speak with confidence and purpose.</p>
+          <ul class="rea-chips"><li>Expressive</li><li>Clear</li><li>Persuasive</li></ul>
+          <p class="rea-cheer">House cheer: to be written by our first Pluma students.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="rea-chapter" id="house-igboya" data-world-stop="house-igboya" data-stop-label="Ìgboyà" aria-labelledby="hi-title">
+      <article class="rea-card rea-house-card rea-house-card--igboya" data-reveal data-house-key="igboya" data-house-name="Ìgboyà" data-house-color="#FCA00C" data-house-meaning="courage" data-house-language="Yoruba">
+        <div class="rea-house-card__band">
+          <div><p class="rea-house-card__meta">Yoruba · “courage” · say ee-gboh-YAH</p><h2 class="rea-house-card__name" id="hi-title">Ìgboyà</h2></div>
+          <svg class="rea-house-card__crest" viewBox="0 0 100 120" aria-hidden="true"><use href="#rea-crest"/></svg>
+        </div>
+        <div class="rea-house-card__body">
+          <span class="rea-pillar">Advocate Boldly</span>
+          <p>Members of Ìgboyà stand up and speak up. They study the issue, listen first, and act with courage for themselves and their communities.</p>
+          <ul class="rea-chips"><li>Brave</li><li>Principled</li><li>Action-ready</li></ul>
+          <p class="rea-cheer">House cheer: to be written by our first Ìgboyà students.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="rea-chapter rea-chapter--right" id="house-umoja" data-world-stop="house-umoja" data-stop-label="Umoja" aria-labelledby="hu-title">
+      <article class="rea-card rea-house-card rea-house-card--umoja" data-reveal data-house-key="umoja" data-house-name="Umoja" data-house-color="#111111" data-house-ink="#FFFFFF" data-house-meaning="unity" data-house-language="Swahili">
+        <div class="rea-house-card__band">
+          <div><p class="rea-house-card__meta">Swahili · “unity” · say oo-MOH-jah</p><h2 class="rea-house-card__name" id="hu-title">Umoja</h2></div>
+          <svg class="rea-house-card__crest" viewBox="0 0 100 120" aria-hidden="true" style="--h:#111"><use href="#rea-crest"/></svg>
+        </div>
+        <div class="rea-house-card__body">
+          <span class="rea-pillar">Belong Together</span>
+          <p>Umoja is the black of every REA feather, the base that holds all the colors together. Members of Umoja build belonging and make sure every voice is heard.</p>
+          <ul class="rea-chips"><li>Loyal</li><li>Supportive</li><li>Community-minded</li></ul>
+          <p class="rea-cheer">House cheer: to be written by our first Umoja students.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="rea-chapter" id="sorting" data-world-stop="houses-sorting" data-stop-label="The Wheel" aria-labelledby="sort-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">The sorting</p>
+        <h2 class="rea-h2" id="sort-title" data-split>Spin the <mark class="rea-mark rea-mark--orange">House Wheel</mark></h2>
+        <p>Joining a House will be a celebration: new students welcomed by their whole school, one spin at a time. Try it. Tap the button or the wheel itself.</p>
+        <div class="rea-btn-row"><button class="rea-btn rea-btn--orange" type="button" data-world-action="spin" data-cursor="Spin!">Spin the wheel</button></div>
+        <p class="rea-small" style="margin:14px 0 0" data-spin-result aria-live="polite">The wheel is waiting…</p>
+      </div>
+    </section>
+
+    <section class="rea-chapter rea-chapter--right" data-world-stop="houses-cup" data-stop-label="House Cup" aria-labelledby="cup-title">
+      <div class="rea-card" data-reveal>
+        <p class="rea-eyebrow">The House Cup</p>
+        <h2 class="rea-h2" id="cup-title" data-split>Every point is a <mark class="rea-mark rea-mark--yellow">story.</mark></h2>
+        <p>Houses will earn points for scholarship, kindness, service, attendance, and courage, then celebrate together at the end of each year.</p>
+        <ul class="rea-cup" aria-label="Example standings">
+          <li style="--h: var(--orange)"><span>Ìgboyà</span><span class="rea-cup__bar"><i data-bar="1"></i></span><span>1,305</span></li>
+          <li style="--h: var(--aqua)"><span>Lumière</span><span class="rea-cup__bar"><i data-bar="0.95"></i></span><span>1,240</span></li>
+          <li style="--h: #111"><span>Umoja</span><span class="rea-cup__bar"><i data-bar="0.927"></i></span><span>1,210</span></li>
+          <li style="--h: var(--yellow)"><span>Pluma</span><span class="rea-cup__bar"><i data-bar="0.904"></i></span><span>1,180</span></li>
+        </ul>
+        <p class="rea-small" style="margin:0">Illustrative example only. No points have been awarded yet.</p>
+      </div>
+    </section>
+
+    <section class="rea-chapter rea-chapter--tall" data-world-stop="houses-cta" data-stop-label="Name the Houses" aria-labelledby="name-title">
+      <div class="rea-card rea-card--wide" data-reveal>
+        <span class="rea-card__tape" aria-hidden="true"></span>
+        <p class="rea-eyebrow">Co-design</p>
+        <h2 class="rea-h2" id="name-title" data-split>Help us name the <mark class="rea-mark rea-mark--aqua">Houses.</mark></h2>
+        <p>The names on this page are working proposals. Students, families, and community members will help decide the final House names, colors, and traditions. Tell us what you think.</p>
+        <form class="rea-form" data-demo-form>
+          <div class="rea-form__row">
+            <label>Your name<input class="rea-input" name="name" autocomplete="name"></label>
+            <label>Email<input class="rea-input" type="email" name="email" autocomplete="email" required></label>
+          </div>
+          <label>Favorite proposed name
+            <select class="rea-select" name="favorite">
+              <option>Lumière</option><option>Pluma</option><option>Ìgboyà</option><option>Umoja</option><option>None yet. I have ideas!</option>
+            </select>
+          </label>
+          <label>Your idea (a name, a cheer, a tradition)<input class="rea-input" name="idea"></label>
+          <div class="rea-btn-row" style="margin-top:6px"><button class="rea-btn" type="submit">Share Your Voice</button></div>
+          <p class="rea-disclaimer">Feedback is used to inform the design of the proposed school. Reimagine Education Academy is in development and opening is subject to charter authorization.</p>
+        </form>
+        <div class="rea-success" data-form-success hidden tabindex="-1">Thank you! Your idea is in the nest. We’ll share what we heard and what we changed.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rea-footer">
+    <div class="rea-footer__grid">
+      <div>
+        <img class="rea-footer__logo" src="assets/img/rea-logo-768.webp" alt="Reimagine Education Academy" width="768" height="512" loading="lazy">
+        <p style="margin-top:18px; max-width:46ch">Reimagine Education Initiative is developing Reimagine Education Academy, a proposed tuition-free, open-enrollment K–8 public charter school planned for Mobile, Alabama. Opening is targeted for Fall 2028 and is subject to charter authorization.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul><li><a href="index.html">Home</a></li><li><a href="index.html#model">School Model</a></li><li><a href="index.html#codesign">Community Co-Design</a></li><li><a href="index.html#faq">FAQ</a></li></ul>
+      </div>
+      <div>
+        <h4>Get involved</h4>
+        <ul><li><a href="index.html#join">Join the Movement</a></li><li><a href="index.html#join">Volunteer With Us</a></li><li><a href="index.html#join">Become a Founding Supporter</a></li></ul>
+      </div>
+    </div>
+    <div class="rea-footer__legal"><span>© 2026 Reimagine Education Initiative</span><span>Think Critically. Write Powerfully. Advocate Boldly.</span></div>
+  </footer>
+</body>
+</html>
