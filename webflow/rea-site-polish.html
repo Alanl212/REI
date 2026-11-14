@@ -1,0 +1,622 @@
+<!--
+  Reimagine Education — site polish embed
+  Paste into Webflow: Page settings → Custom code → "Before </body> tag" (Home page),
+  or into one Embed element placed last on the page. Remove it to roll everything back.
+  It only adds to the page: chapter text, fields and CMS items stay editable in Webflow.
+-->
+<style>
+#rea-concept2 {
+  --rea-ink: #172d45;
+  --rea-paper: #f3e4c4;
+  --rea-rule: #94682b;
+  --rea-brass: var(--_atrium-palette---brass, #dfb875);
+  --rea-ivory: var(--_atrium-palette---ivory, #fff0d2);
+  --rea-cream: var(--_reimagine-education---cream, #fffdf2);
+  --rea-midnight: var(--_atrium-palette---midnight, #0d2031);
+  --rea-enamel: var(--_atrium-palette---enamel-blue, #1e4562);
+  --rea-sky: var(--_atrium-palette---baby-blue, #65caff);
+}
+/* Each chapter takes its accent from its shield, the way every room has its own colour. */
+#rea-concept2 .c2-chapter { --rea-room: 101 202 255; }
+#rea-concept2 #c2-academy { --rea-room: 223 184 117; }
+#rea-concept2 #c2-community { --rea-room: 255 132 62; }
+#rea-concept2 #c2-belonging { --rea-room: 255 168 64; }
+#rea-concept2 #c2-join { --rea-room: 252 214 21; }
+
+/* ── 1. Fixes ─────────────────────────────────────────────────────────── */
+
+/* A link such as /#c2-vision made the browser scroll the stage itself, cropping the logo and frame. */
+main#rea-concept2 :is(.c2-stage, .c2-chapter-layer) { overflow: clip; }
+
+/* Chapter text dissolves before it reaches the Menu pennant, logo and medallions. */
+main#rea-concept2 [data-c2-ribbon-ready] .c2-popup-scroll {
+  --rea-fade-top: 104px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 20px, #000 var(--rea-fade-top),
+    #000 calc(100% - var(--c2-ribbon-fade)), transparent);
+  mask-image: linear-gradient(to bottom, transparent 20px, #000 var(--rea-fade-top),
+    #000 calc(100% - var(--c2-ribbon-fade)), transparent);
+}
+@media (max-width: 991px) {
+  main#rea-concept2 [data-c2-ribbon-ready] .c2-popup-scroll { --rea-fade-top: 90px; }
+}
+@media (max-width: 767px) {
+  main#rea-concept2 [data-c2-ribbon-ready] .c2-popup-scroll { --rea-fade-top: 114px; }
+}
+
+/* The empty duplicate logo link was a nameless tab stop that cleared the page address. */
+main#rea-concept2 .c2-header > a.c2-home:not([data-c2-go]) { display: none; }
+
+main#rea-concept2 [data-rea-donate] { cursor: pointer; }
+main#rea-concept2 [data-rea-donate]:focus-visible {
+  outline: 3px solid #fff28d;
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+/* Team rows stay centred and evenly filled (3 + 2 instead of 4 + 1). */
+main#rea-concept2 :is(.rea-team-grid, .rea-team-board-grid)[style*="--rea-team-cols"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 0;
+  width: calc(100% * var(--rea-team-cols) / var(--rea-team-max));
+  max-width: calc(1368px * var(--rea-team-cols) / var(--rea-team-max));
+}
+main#rea-concept2 :is(.rea-team-grid, .rea-team-board-grid)[style*="--rea-team-cols"] > .w-dyn-item {
+  box-sizing: border-box;
+  flex: 0 0 calc(100% / var(--rea-team-cols));
+  min-width: 0;
+  padding-inline: 8px;
+}
+
+/* ── 2. One type system for every chapter (matches About Us) ──────────── */
+
+main#rea-concept2 .c2-chapter .c2-h2 {
+  color: var(--rea-cream);
+  font-family: Archivo, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+main#rea-concept2 .c2-chapter .c2-chapter-subheading,
+main#rea-concept2 :is(.c2-cta, .c2-native-form-label) {
+  font-family: Archivo, sans-serif;
+  letter-spacing: 0;
+}
+main#rea-concept2 .c2-cta { font-weight: 700; }
+
+/* ── 3. Chapter sections become plaques on a grid ─────────────────────── */
+
+main#rea-concept2 .c2-chapter .c2-chapter-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(14px, 1.6vw, 22px);
+  max-width: 68rem;
+  counter-reset: rea-part;
+}
+main#rea-concept2 .c2-chapter .c2-chapter-body > .c2-cta {
+  justify-self: start;
+  margin-top: 6px;
+}
+main#rea-concept2 .c2-chapter :is(.c2-chapter-part, .rea-ways) {
+  position: relative;
+  margin: 0;
+  padding: clamp(20px, 2.3vw, 30px);
+  border: 1px solid rgb(223 184 117 / .7);
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 90% at 10% 0%, rgb(var(--rea-room) / .13), transparent 60%),
+    linear-gradient(165deg, rgb(30 69 98 / .8), rgb(13 32 49 / .92));
+  box-shadow:
+    inset 0 0 0 3px rgb(13 32 49 / .9),
+    inset 0 0 0 4px rgb(193 157 99 / .36),
+    0 16px 34px rgb(3 12 22 / .42);
+}
+main#rea-concept2 .c2-chapter .c2-chapter-part { counter-increment: rea-part; }
+main#rea-concept2 .c2-chapter .c2-chapter-part::before {
+  content: counter(rea-part, decimal-leading-zero);
+  display: block;
+  margin-bottom: 12px;
+  color: rgb(var(--rea-room));
+  font: 700 13px/1 "Roboto Condensed", Arial, sans-serif;
+  letter-spacing: .16em;
+}
+main#rea-concept2 .c2-chapter :is(.c2-chapter-part, .rea-ways) .c2-chapter-subheading {
+  margin: 0 0 12px;
+  color: var(--rea-ivory);
+  font-size: clamp(21px, 1.9vw, 26px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+main#rea-concept2 .c2-chapter :is(.c2-chapter-part, .rea-ways) .c2-chapter-subheading::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  margin-top: 12px;
+  background: rgb(var(--rea-room));
+}
+main#rea-concept2 .c2-chapter .c2-chapter-part .c2-paragraph {
+  margin: 0;
+  color: rgb(255 253 242 / .93);
+  font-size: 16px;
+  line-height: 1.7;
+}
+main#rea-concept2 .c2-chapter .c2-chapter-part .c2-paragraph + .c2-paragraph { margin-top: 12px; }
+
+/* Questions and answers read as a list. */
+main#rea-concept2 .c2-chapter .c2-chapter-part .c2-paragraph:has(> strong:first-child) {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgb(223 184 117 / .24);
+}
+main#rea-concept2 .c2-chapter .c2-chapter-part .c2-chapter-subheading + .c2-paragraph:has(> strong:first-child) {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+main#rea-concept2 .c2-chapter .c2-chapter-part .c2-paragraph > strong:first-child {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--rea-ivory);
+  font-weight: 600;
+}
+
+@media (min-width: 992px) {
+  main#rea-concept2 .c2-chapter .c2-chapter-body {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  main#rea-concept2 .c2-chapter .c2-chapter-body > .c2-cta { grid-column: 1 / -1; }
+  /* Three sections sit side by side. */
+  main#rea-concept2 .c2-chapter .c2-chapter-body:not([data-rea-layout]):has(> .c2-chapter-part:nth-of-type(3)):not(:has(> .c2-chapter-part:nth-of-type(4))) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  /* Chapters with a form: reading on the left, the form beside it. */
+  main#rea-concept2 .c2-chapter .c2-chapter-body[data-rea-layout] {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+    align-items: start;
+  }
+  main#rea-concept2 .c2-chapter [data-rea-layout="info-form"] > .c2-chapter-part { grid-column: 1; }
+  main#rea-concept2 .c2-chapter [data-rea-layout="info-form"] > .rea-form-card {
+    grid-column: 2;
+    grid-row: 1 / span var(--rea-rows, 1);
+  }
+}
+@media (min-width: 992px) and (min-height: 760px) {
+  /* Sticky offsets start below the scroll area's 150px top padding, so -34px rests 116px from its top. */
+  main#rea-concept2 .c2-chapter [data-rea-layout="info-form"] > .rea-form-card {
+    position: sticky;
+    top: -34px;
+  }
+}
+
+/* ── 4. Forms sit on parchment, like the mission scroll and the bios ──── */
+
+main#rea-concept2 .rea-form-card {
+  position: relative;
+  padding: clamp(22px, 2.5vw, 34px);
+  border-radius: 14px;
+  color: var(--rea-ink);
+  background: radial-gradient(140% 100% at 50% 0%, #fbf1d9, var(--rea-paper) 55%, #ead7ae);
+  box-shadow:
+    inset 0 0 0 1px rgb(148 104 43 / .45),
+    inset 0 0 0 6px var(--rea-paper),
+    inset 0 0 0 7px rgb(148 104 43 / .28),
+    0 18px 40px rgb(3 12 22 / .5);
+}
+main#rea-concept2 .rea-form-card :is(.c2-chapter-form-area, .c2-native-form) { margin: 0; }
+main#rea-concept2 .rea-form-card .w-form { margin-bottom: 0; }
+main#rea-concept2 .c2-chapter .rea-form-card .c2-chapter-subheading {
+  margin: 0 0 18px;
+  color: var(--rea-ink);
+  font-size: clamp(23px, 2.1vw, 30px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+main#rea-concept2 .c2-chapter .rea-form-card .c2-chapter-subheading::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  margin-top: 14px;
+  background: var(--rea-rule);
+}
+main#rea-concept2 .rea-form-card .c2-native-form-label {
+  margin-bottom: 6px;
+  color: #243b51;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+main#rea-concept2 .rea-form-card :is(input[type="text"], input[type="email"], textarea) {
+  min-height: 50px;
+  margin-bottom: 16px;
+  padding: 11px 14px;
+  border: 1px solid #b89b6a;
+  border-radius: 10px;
+  background: #fffdf6;
+  box-shadow: inset 0 1px 2px rgb(23 45 69 / .08);
+  color: var(--rea-ink);
+  font: 400 16px/1.4 Archivo, sans-serif;
+}
+main#rea-concept2 .rea-form-card textarea { min-height: 124px; resize: vertical; }
+main#rea-concept2 .rea-form-card :is(input, textarea)::placeholder { color: #6f7a86; opacity: 1; }
+main#rea-concept2 .rea-form-card :is(input[type="text"], input[type="email"], textarea):focus {
+  border-color: var(--rea-enamel);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgb(101 202 255 / .5);
+}
+main#rea-concept2 .rea-form-card .c2-cta {
+  margin-top: 4px;
+  border-color: var(--rea-ink);
+  background: var(--rea-ink) linear-gradient(120deg, rgb(101 202 255 / .16), transparent 60%);
+  box-shadow: inset 0 1px rgb(255 255 255 / .16), 0 4px 12px rgb(23 45 69 / .28);
+  color: var(--rea-ivory);
+}
+main#rea-concept2 .rea-form-card .c2-cta:is(:hover, :focus-visible) { filter: brightness(1.18); }
+main#rea-concept2 .rea-form-card .c2-cta:focus-visible { outline: 3px solid var(--rea-enamel); outline-offset: 3px; }
+main#rea-concept2 .rea-form-card :is(.w-form-done, .w-form-fail) {
+  margin-top: 4px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  font: 500 16px/1.5 Archivo, sans-serif;
+  text-align: left;
+}
+main#rea-concept2 .rea-form-card .w-form-done {
+  border: 1px solid rgb(30 69 98 / .4);
+  background: rgb(30 69 98 / .1);
+  color: var(--rea-ink);
+}
+main#rea-concept2 .rea-form-card .w-form-fail {
+  border: 1px solid rgb(160 52 28 / .45);
+  background: rgb(190 70 40 / .1);
+  color: #7a2412;
+}
+
+/* ── 5. Academy: opening grades and STREAM+H ──────────────────────────── */
+
+main#rea-concept2 .rea-grades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+main#rea-concept2 .rea-grades li {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(223 184 117 / .5);
+  border-radius: 50%;
+  color: rgb(255 240 210 / .72);
+  font: 600 15px/1 Archivo, sans-serif;
+}
+main#rea-concept2 .rea-grades li[data-opening] {
+  border-color: var(--rea-brass);
+  background: var(--rea-brass) linear-gradient(140deg, rgb(255 248 227 / .75), transparent 70%);
+  box-shadow: 0 2px 8px rgb(3 12 22 / .4);
+  color: var(--rea-midnight);
+  font-weight: 700;
+}
+main#rea-concept2 .rea-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 12px 0 0;
+  color: rgb(255 240 210 / .8);
+  font: 500 13px/1.4 Archivo, sans-serif;
+}
+main#rea-concept2 .rea-key span { display: inline-flex; align-items: center; gap: 7px; }
+main#rea-concept2 .rea-key span::before {
+  content: "";
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--rea-brass);
+  border-radius: 50%;
+}
+main#rea-concept2 .rea-key span[data-opening]::before { background: var(--rea-brass); }
+
+main#rea-concept2 .rea-stream {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+main#rea-concept2 .rea-stream li {
+  box-sizing: border-box;
+  flex: 1 1 92px;
+  max-width: 132px;
+  display: grid;
+  gap: 5px;
+  padding: 10px 8px 9px;
+  border: 1px solid rgb(101 202 255 / .34);
+  border-radius: 9px;
+  background: rgb(13 32 49 / .55);
+  text-align: center;
+}
+main#rea-concept2 .rea-stream b {
+  color: var(--rea-brass);
+  font: 700 22px/1 Archivo, sans-serif;
+}
+main#rea-concept2 .rea-stream span {
+  color: rgb(255 240 210 / .86);
+  font: 600 11px/1.2 "Roboto Condensed", Arial, sans-serif;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ── 6. Contact: other ways to reach the team ─────────────────────────── */
+
+main#rea-concept2 .rea-ways ul { margin: 0; padding: 0; list-style: none; }
+main#rea-concept2 .rea-ways li + li {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgb(223 184 117 / .24);
+}
+main#rea-concept2 .rea-ways small {
+  display: block;
+  margin-bottom: 3px;
+  color: rgb(var(--rea-room));
+  font: 700 12px/1.2 "Roboto Condensed", Arial, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+main#rea-concept2 .rea-ways a {
+  color: var(--rea-cream);
+  font: 500 17px/1.4 Archivo, sans-serif;
+  text-decoration: underline;
+  text-decoration-color: rgb(223 184 117 / .6);
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+main#rea-concept2 .rea-ways a:is(:hover, :focus-visible) { color: var(--rea-brass); }
+main#rea-concept2 .rea-ways a:focus-visible { outline: 2px solid var(--rea-sky); outline-offset: 3px; border-radius: 3px; }
+
+/* ── 7. Phones: the home screen names the school ──────────────────────── */
+
+@media (max-width: 767px) {
+  main#rea-concept2 .c2-header > a.c2-home.c2-responsive-home[data-c2-go] {
+    display: flex;
+    top: 6px;
+    left: 8px;
+    width: 120px;
+    height: 76px;
+  }
+  main#rea-concept2 .c2-header > a.c2-home[data-c2-go] .c2-brand-image { width: 100%; height: 100%; }
+  main#rea-concept2 .c2-main-caption {
+    display: block;
+    width: 88%;
+    bottom: max(18px, env(safe-area-inset-bottom));
+  }
+  main#rea-concept2 .c2-main-heading { margin-bottom: 6px; font-size: clamp(21px, 6.2vw, 27px); }
+  main#rea-concept2 .c2-main-description { font-size: 14px; line-height: 1.4; }
+}
+@media (max-width: 767px) and (max-height: 700px) {
+  main#rea-concept2 .c2-main-description { display: none; }
+}
+</style>
+<script type="module">
+// Edit these two lists if the opening plan or the curriculum name changes.
+const OPENING_GRADES = ['K', '1', '2', '6'];
+const ALL_GRADES = ['K', '1', '2', '3', '4', '5', '6', '7', '8'];
+const STREAM = [['S', 'Science'], ['T', 'Technology'], ['R', 'Reading'], ['E', 'Engineering'],
+  ['A', 'Arts'], ['M', 'Mathematics'], ['+H', 'Humanities']];
+const PLACEHOLDERS = { Name: 'First and last name', Email: 'name@example.com', Message: 'How can we help?' };
+
+const root = document.querySelector('#rea-concept2');
+let started = false;
+
+function make(tag, props = {}, children = []) {
+  const node = Object.assign(document.createElement(tag), props);
+  node.append(...children);
+  return node;
+}
+
+function partNamed(chapter, name) {
+  const heading = [...chapter.querySelectorAll('.c2-chapter-part .c2-chapter-subheading')]
+    .find(node => node.textContent.trim().toLowerCase() === name);
+  return heading?.closest('.c2-chapter-part');
+}
+
+function start() {
+  if (started || !root || !root.querySelector('.c2-chapter-body')) return;
+  started = true;
+  const $ = selector => root.querySelector(selector);
+  const $$ = selector => [...root.querySelectorAll(selector)];
+
+  // Browsers without overflow: clip still need the stage put back after an address jump.
+  for (const box of $$('.c2-stage, .c2-chapter-layer')) {
+    const pin = () => { if (box.scrollTop || box.scrollLeft) box.scrollTo(0, 0); };
+    box.addEventListener('scroll', pin, { passive: true });
+    addEventListener('load', pin);
+    pin();
+  }
+
+  // Icon-only links announce what they do.
+  $('.c2-medallion-wrapper.mail')?.setAttribute('aria-label', 'Email us');
+  const follow = $('.c2-medallion.c2-explore a');
+  if (follow) {
+    follow.setAttribute('aria-label', 'Follow us on Facebook (opens in a new tab)');
+    follow.rel = 'noopener';
+  }
+
+  // The Donate medallion is not a link in Webflow yet, so clicks went nowhere.
+  const donate = $('.c2-footer .c2-medallion.c2-motion .c2-medallion-wrapper');
+  const giveLink = $('#c2-menu a[href="#c2-community"]');
+  if (donate && giveLink && !donate.closest('a, button')) {
+    // The chapter's own "Give" tab scrolls to the card and marks it in the ribbon.
+    const showGive = () => {
+      [...root.querySelectorAll('#c2-community .c2-chapter-ribbon-link')]
+        .find(button => button.textContent.trim().toLowerCase() === 'give')?.click();
+    };
+    const openGive = () => {
+      if (root.dataset.activeChapter === 'community' && root.dataset.sceneState === 'open') {
+        showGive();
+        return;
+      }
+      const onTransition = event => {
+        if (event.detail.phase !== 'finish' || !event.detail.open) return;
+        root.removeEventListener('c2:transition', onTransition);
+        requestAnimationFrame(showGive);
+      };
+      root.addEventListener('c2:transition', onTransition);
+      setTimeout(() => root.removeEventListener('c2:transition', onTransition), 8000);
+      giveLink.click();
+    };
+    donate.dataset.reaDonate = '';
+    donate.setAttribute('role', 'link');
+    donate.setAttribute('aria-label', 'Donate: ways to give');
+    donate.tabIndex = 0;
+    donate.addEventListener('click', openGive);
+    donate.addEventListener('keydown', event => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      openGive();
+    });
+  }
+
+  // "Read Our Story" pointed at a section that does not exist yet; land on the founding story.
+  const founder = $('#rea-founder');
+  if (founder && !document.getElementById('rea-our-story')) {
+    founder.prepend(make('span', { id: 'rea-our-story' }));
+  }
+
+  for (const field of $$('.c2-native-form :is(input, textarea)')) {
+    if (field.placeholder === 'Example text' && PLACEHOLDERS[field.name]) {
+      field.placeholder = PLACEHOLDERS[field.name];
+    }
+  }
+
+  for (const body of $$('.c2-chapter .c2-chapter-body')) {
+    const heading = body.querySelector(':scope > .c2-chapter-form-area');
+    const form = body.querySelector(':scope > .c2-native-form');
+    // A form that already holds an embedded check is left where it is so it is not reloaded.
+    if (!heading || !form || form.querySelector('iframe')) continue;
+    const card = make('div', { className: 'rea-form-card' });
+    heading.before(card);
+    card.append(heading, form);
+    const parts = body.querySelectorAll(':scope > .c2-chapter-part').length;
+    body.dataset.reaLayout = parts ? 'info-form' : 'form-aside';
+    body.style.setProperty('--rea-rows', String(Math.max(1, parts)));
+  }
+
+  const academy = $('#c2-academy');
+  const grades = academy && partNamed(academy, 'grades');
+  if (grades) {
+    const later = ALL_GRADES.filter(grade => !OPENING_GRADES.includes(grade));
+    const list = make('ul', { className: 'rea-grades' }, ALL_GRADES.map(grade => {
+      const item = make('li', { textContent: grade });
+      if (OPENING_GRADES.includes(grade)) item.dataset.opening = '';
+      return item;
+    }));
+    list.setAttribute('role', 'img');
+    list.setAttribute('aria-label',
+      `Opening grades: ${OPENING_GRADES.join(', ')}. Added as the school grows: ${later.join(', ')}.`);
+    const opening = make('span', { textContent: 'Opening grades' });
+    opening.dataset.opening = '';
+    const key = make('p', { className: 'rea-key' }, [opening, make('span', { textContent: 'Added as the school grows' })]);
+    key.setAttribute('aria-hidden', 'true');
+    grades.append(list, key);
+  }
+  const curriculum = academy && partNamed(academy, 'curriculum');
+  if (curriculum && /STREAM\+H/.test(curriculum.textContent)) {
+    const list = make('ul', { className: 'rea-stream' }, STREAM.map(([letter, word]) =>
+      make('li', {}, [make('b', { textContent: letter }), make('span', { textContent: word })])));
+    list.setAttribute('aria-label', 'STREAM+H stands for');
+    curriculum.append(list);
+  }
+
+  // Contact: the same addresses the medallions use, listed beside the form.
+  const contactBody = $('#c2-join .c2-chapter-body');
+  const mail = $('.c2-medallion-wrapper.mail')?.getAttribute('href') || '';
+  const linkedIn = $('#c2-menu a[href*="linkedin.com"]')?.href;
+  const ways = [];
+  if (mail.startsWith('mailto:')) {
+    const address = decodeURIComponent(mail.slice(7).split('?')[0]);
+    ways.push(['Email', address, mail]);
+  }
+  if (follow?.href) ways.push(['Facebook', 'Reimagine Education Initiative', follow.href]);
+  if (linkedIn) ways.push(['LinkedIn', 'Reimagine Education Initiative', linkedIn]);
+  if (contactBody && ways.length) {
+    const title = make('h3', { className: 'c2-chapter-subheading', textContent: 'Other ways to reach us' });
+    const list = make('ul', {}, ways.map(([label, text, href]) => {
+      const link = make('a', { href, textContent: text });
+      if (!href.startsWith('mailto:')) {
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.setAttribute('aria-label', `${text} on ${label} (opens in a new tab)`);
+      }
+      return make('li', {}, [make('small', { textContent: label }), link]);
+    }));
+    contactBody.append(make('aside', { className: 'rea-ways' }, [title, list]));
+  }
+
+  // Cards now share rows, so the section ribbon marks the card that was asked for, or the first in its row.
+  for (const chapter of $$('.c2-chapter[data-c2-ribbon-ready]')) {
+    const scroll = chapter.querySelector('.c2-popup-scroll');
+    const buttons = [...chapter.querySelectorAll('.c2-chapter-ribbon-link')];
+    const cards = [...chapter.querySelectorAll('.c2-chapter-body :is(h3, h4)')]
+      .filter(heading => heading.textContent.trim() && !heading.closest('.rea-ways'))
+      .map(heading => heading.closest('.c2-chapter-part, .rea-form-card') || heading);
+    if (!scroll || buttons.length !== cards.length + 1) continue;
+    const top = card => card.getBoundingClientRect().top;
+    // A tab that was chosen stays current until the reader scrolls on their own.
+    let asked = null;
+    function mark() {
+      if (!buttons[0].getClientRects().length) return;
+      let current = asked;
+      if (!current) {
+        const line = scroll.getBoundingClientRect().top
+          + (parseFloat(getComputedStyle(scroll).scrollPaddingTop) || 16) + 24;
+        const atEnd = scroll.scrollTop >= scroll.scrollHeight - scroll.clientHeight - 2;
+        // A form standing beside the reading column is not part of the reading order.
+        const left = cards[0].getBoundingClientRect().left + 8;
+        const reading = cards.filter(card =>
+          !(card.matches('.rea-form-card') && card.getBoundingClientRect().left > left));
+        const reached = atEnd ? reading.at(-1) : reading.findLast(card => top(card) <= line);
+        const first = reached && reading.find(card => Math.abs(top(card) - top(reached)) < 4);
+        current = buttons[first ? cards.indexOf(first) + 1 : 0];
+      }
+      for (const button of buttons) {
+        if (button === current) button.setAttribute('aria-current', 'location');
+        else button.removeAttribute('aria-current');
+      }
+    }
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        asked = button;
+        mark();
+      });
+    }
+    for (const type of ['wheel', 'touchmove', 'keydown', 'pointerdown']) {
+      scroll.addEventListener(type, () => { asked = null; }, { passive: true });
+    }
+    scroll.addEventListener('scroll', mark, { passive: true });
+  }
+
+  function balanceTeam() {
+    const most = innerWidth >= 1280 ? 4 : innerWidth >= 480 ? 3 : 2;
+    for (const grid of $$('.rea-team-grid, .rea-team-board-grid')) {
+      const count = grid.querySelectorAll(':scope > .w-dyn-item').length;
+      if (!count) continue;
+      const columns = Math.ceil(count / Math.ceil(count / most));
+      grid.style.setProperty('--rea-team-cols', String(columns));
+      grid.style.setProperty('--rea-team-max', String(most));
+    }
+  }
+  balanceTeam();
+  addEventListener('resize', balanceTeam, { passive: true });
+
+  root.dataset.reaPolish = '';
+}
+
+start();
+if (!started) {
+  document.addEventListener('DOMContentLoaded', start, { once: true });
+  addEventListener('load', start, { once: true });
+}
+</script>
